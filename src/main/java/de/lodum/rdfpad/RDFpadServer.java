@@ -1,4 +1,4 @@
-// Copyright 2011 Carsten Ke§ler, carsten.kessler@uni-muenster.de	
+// Copyright 2011 Carsten Keï¿½ler, carsten.kessler@uni-muenster.de	
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -35,23 +35,22 @@ public class RDFpadServer {
 		Server server = new Server();
 		SelectChannelConnector connector = new SelectChannelConnector();
 		connector.setPort(new Integer(args[0]));
-		
-		
-		//connector.setPort(new Integer(args[0]));
-        server.addConnector(connector);
- 
-        ResourceHandler resource_handler = new ResourceHandler();
-        resource_handler.setDirectoriesListed(true);
-        resource_handler.setWelcomeFiles(new String[]{ "" });
- 
-        resource_handler.setResourceBase(".");
- 
-        HandlerList handlers = new HandlerList();
-        handlers.setHandlers(new Handler[] { new RDFpad(), resource_handler });
-        server.setHandler(handlers);
- 
-        server.start();
-        server.join();
+
+		// connector.setPort(new Integer(args[0]));
+		server.addConnector(connector);
+
+		ResourceHandler resource_handler = new ResourceHandler();
+		resource_handler.setDirectoriesListed(true);
+		resource_handler.setWelcomeFiles(new String[] { "" });
+
+		resource_handler.setResourceBase(".");
+
+		HandlerList handlers = new HandlerList();
+		handlers.setHandlers(new Handler[] { new RDFpad(), resource_handler });
+		server.setHandler(handlers);
+
+		server.start();
+		server.join();
 
 	}
 }

@@ -1,4 +1,4 @@
-// Copyright 2011 Carsten Ke§ler, carsten.kessler@uni-muenster.de	
+// Copyright 2011 Carsten Keï¿½ler, carsten.kessler@uni-muenster.de	
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -39,13 +39,14 @@ import com.hp.hpl.jena.rdf.model.StmtIterator;
 public class HTMLModel {
 
 	private static String FOOTER = "<hr /><p align=\"right\"><small><a href=\"http://ifgi.uni-muenster.de/~kessler/rdfpad/\">RDFpad is free and open source software</a>. Contact: <a property=\"dc:creator\" "
-			+ "href=\"http://ifgi.uni-muenster.de/~kessler/\">Carsten Ke§ler</small></p>\n"
+			+ "href=\"http://ifgi.uni-muenster.de/~kessler/\">Carsten Keï¿½ler</small></p>\n"
 			+ "</div>\n</div>\n</body>\n</html>";
 
 	/**
 	 * Shows the input form for the etherpad URL.
 	 * 
-	 * @param error if set to true, the msg will be shown in red. 
+	 * @param error
+	 *            if set to true, the msg will be shown in red.
 	 * @param msg
 	 * @param baseRequest
 	 * @param response
@@ -97,7 +98,7 @@ public class HTMLModel {
 	 * @return
 	 */
 	public String getRequestBaseURL(HttpServletRequest request) {
-		//request.setAttribute(arg0, arg1)
+		// request.setAttribute(arg0, arg1)
 		return ("http://" + request.getServerName() + ":" + request
 				.getServerPort());
 	}
@@ -190,8 +191,9 @@ public class HTMLModel {
 				+ padPath + ".n3\">N3</a> &ndash; "
 				+ "View in <a href=\"http://inspector.sindice.com/inspect?url="
 				+ exportURL + "\">Sindice Inspector</a>&ndash;"
-				+ " Query with <a href=\"http://query.lodum.de?queryFrom="+getRequestBaseURL(request) + padPath+".rdf\">SPARQLfly</a></p>"
-				); // TODO
+				+ " Query with <a href=\"http://query.lodum.de?queryFrom="
+				+ getRequestBaseURL(request) + padPath
+				+ ".rdf\">SPARQLfly</a></p>"); // TODO
 		writer.println(FOOTER);
 	}
 
@@ -236,18 +238,18 @@ public class HTMLModel {
 
 		// construct the export URI; looks like
 		// http://ifgipedia.uni-muenster.de/ep/pad/export/foaf-carsten/latest?format=txt
-		//String exportURL = padURL.getProtocol() + "://" + padURL.getHost()
-		//		+ "/p/" + padname + "/export/txt";
-        String exportURL = padURL.getProtocol() + "://" + padURL.getHost()
-        + "/ep/pad/export/" + padname + "/latest?format=txt";
-		URL url= new URL(exportURL);
+		// String exportURL = padURL.getProtocol() + "://" + padURL.getHost()
+		// + "/p/" + padname + "/export/txt";
+		String exportURL = padURL.getProtocol() + "://" + padURL.getHost()
+				+ "/ep/pad/export/" + padname + "/latest?format=txt";
+		URL url = new URL(exportURL);
 		URLConnection con = url.openConnection();
-	
+
 		con.connect();
-		if(con.getContentLength()==-1){
-			//	System.out.println("geht nicht");
-		exportURL = padURL.getProtocol() + "://" + padURL.getHost()
-				+ "/p/" + padname + "/export/txt";
+		if (con.getContentLength() == -1) {
+			// System.out.println("geht nicht");
+			exportURL = padURL.getProtocol() + "://" + padURL.getHost() + "/p/"
+					+ padname + "/export/txt";
 		}
 
 		return exportURL;

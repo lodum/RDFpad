@@ -1,4 +1,4 @@
-// Copyright 2011 Carsten Ke§ler, carsten.kessler@uni-muenster.de	
+// Copyright 2011 Carsten Keï¿½ler, carsten.kessler@uni-muenster.de	
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -43,19 +43,17 @@ public class RDFpad extends AbstractHandler {
 	private HTMLModel html;
 
 	/**
-	 * Entry point for the server, handles all incoming requests. 
+	 * Entry point for the server, handles all incoming requests.
 	 */
-	@Override
 	public void handle(String target, Request baseRequest,
 			HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 
 		// drop any requests that are looking for static files;
 		// they will be handled by the ResourceHandler in RDFpadServer:
-		if(request.getRequestURI().startsWith("/files"))
+		if (request.getRequestURI().startsWith("/files"))
 			return;
-		
-		
+
 		this.logger = LoggerFactory.getLogger(RDFpad.class);
 
 		// forward an input from the form to the permanent URL for the contents
@@ -94,7 +92,6 @@ public class RDFpad extends AbstractHandler {
 		}
 
 	}
-
 
 	/**
 	 * Forwards to a URI with a file extension that is comliant with the MIME
@@ -141,28 +138,29 @@ public class RDFpad extends AbstractHandler {
 				.substring(0, lastDot))));
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter writer = response.getWriter();
-		
 
-		// we try to build a Jena model and then serialize it: 
+		// we try to build a Jena model and then serialize it:
 
 		Model model = ModelFactory.createDefaultModel();
 		try {
-			 // BufferedReader in = new BufferedReader( new InputStreamReader(new URL(exportURL).openStream(),"UTF-8"));
-			//model.read(exportURL, "TTL");
-			model.read(exportURL,exportURL, "TTL");
+			// BufferedReader in = new BufferedReader( new InputStreamReader(new
+			// URL(exportURL).openStream(),"UTF-8"));
+			// model.read(exportURL, "TTL");
+			model.read(exportURL, exportURL, "TTL");
 		} catch (Exception e) {
 			html.showForm(true, e.getLocalizedMessage(), baseRequest, request,
 					response);
 			return;
 		}
-		//PrintWriter out = new PrintWriter(new OutputStreamWriter(respne.getOutputStream(), "UTF8"));
+		// PrintWriter out = new PrintWriter(new
+		// OutputStreamWriter(respne.getOutputStream(), "UTF8"));
 
 		if (requestURI.endsWith(".ttl")) {
 			response.setContentType("text/turtle; charset=UTF-8");
 			response.setStatus(HttpServletResponse.SC_OK);
 			baseRequest.setHandled(true);
 			model.write(writer, "TURTLE");
-		}else if (requestURI.endsWith(".rdf")) {
+		} else if (requestURI.endsWith(".rdf")) {
 			response.setContentType("application/rdf+xml; charset=UTF-8");
 			response.setStatus(HttpServletResponse.SC_OK);
 			baseRequest.setHandled(true);

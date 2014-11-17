@@ -1,4 +1,4 @@
-// Copyright 2011 Carsten Ke§ler, carsten.kessler@uni-muenster.de	
+// Copyright 2011 Carsten Keï¿½ler, carsten.kessler@uni-muenster.de	
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -45,10 +45,10 @@ public class AcceptHeader {
 			accepts = request.getHeaders("ACCEPT");
 
 		// seems like no header has been sent; we'll assume text/html
-		if (!accepts.hasMoreElements() || request.getHeader("accept")!=null) {
-			//check if its given 
-			preferredMIMEType =request.getParameter("accept");
-			if(preferredMIMEType==null || preferredMIMEType==""){
+		if (!accepts.hasMoreElements() || request.getHeader("accept") != null) {
+			// check if its given
+			preferredMIMEType = request.getParameter("accept");
+			if (preferredMIMEType == null || preferredMIMEType == "") {
 				preferredMIMEType = "text/html";
 			}
 		} else {
@@ -73,7 +73,7 @@ public class AcceptHeader {
 						String thisPart = entryParts[j];
 						if (thisPart.startsWith("q=")) {
 							thisQ = new Double(thisPart.split("=")[1])
-							.doubleValue();
+									.doubleValue();
 							j = entryParts.length; // stop here
 						}
 					}
@@ -83,12 +83,11 @@ public class AcceptHeader {
 					if (thisQ == 0.0)
 						thisQ = 1.0;
 
-					// done disentangling stuff: 
-					if(thisQ > largestQ){
+					// done disentangling stuff:
+					if (thisQ > largestQ) {
 						currentlyPreferred = thisType;
 						largestQ = thisQ;
 					}
-
 
 				}
 
@@ -96,7 +95,6 @@ public class AcceptHeader {
 			this.preferredMIMEType = currentlyPreferred;
 
 		}
-
 
 	}
 
