@@ -27,7 +27,7 @@ Maven should resolve all dependencies automatically. Otherwise, you'll need the 
 
 ##Running RDFpad
 
-If you have build RDFpad with maven, you can start RDFpad with
+If you have built RDFpad with maven, you can start RDFpad with
 
 java -jar rdfpad-1.0-jar-with-dependencies.jar [port]
 
