@@ -17,16 +17,21 @@ RDFpad therefore supports quick and dirty vocabulary development, without the ha
 A running demo is available at http://rdfpad.lodum.de/
 This [blog post](http://lodum.de/rdfpad/) explains the idea behind RDFpad in a bit more detail
 
-## Required Libraries
-You'll need the libs that come with [Jena](http://jena.sourceforge.net/) (tested with version 2.6.4) and [Jetty](http://jetty.codehaus.org/jetty/) (tested with version 7.3.0). RDFpad is an embedded server, so there is no need for a servlet container (Tomcat or the like).
+## Build
+
+You can build RDFPad with maven by executing:
+
+mvn clean compile assembly:single
+
+Maven should resolve all dependencies automatically. Otherwise, you'll need the libs that come with [Jena](http://jena.sourceforge.net/) (tested with version 2.6.4) and [Jetty](http://jetty.codehaus.org/jetty/) (tested with version 7.3.0). RDFpad is an embedded server, so there is no need for a servlet container (Tomcat or the like).
 
 ##Running RDFpad
 
-Assuming you have the required libs on your path, simply start the server via
+If you have build RDFpad with maven, you can start RDFpad with
 
-java de.lodum.rdfpad.RDFpadServer [port]
+java -jar rdfpad-1.0-jar-with-dependencies.jar [port]
 
-For example, `java de.lodum.rdfpad.RDFpadServer 8080` . Note that there are some caveats if you want to run RDFpad on port 80 on a Unix-based system.
+Note that there are some caveats if you want to run RDFpad on port 80 on a Unix-based system.
 
 ## License
 
